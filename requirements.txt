@@ -1,0 +1,14 @@
+streamlit==1.34.0
+torch>=1.12.0
+torchvision>=0.13.0
+opencv-python
+Pillow
+matplotlib
+numpy
+pyyaml
+scipy
+tqdm
+seaborn
+pandas
+requests
+scikit-image
