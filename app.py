@@ -1,11 +1,11 @@
 import streamlit as st
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFont
 import torch
 import numpy as np
 import os
 import sys
-import cv2
 
+# Add yolov5 to path
 sys.path.append(os.path.join(os.path.dirname(__file__), 'yolov5'))
 
 from models.experimental import attempt_load
@@ -13,11 +13,13 @@ from yolov5.utils.general import non_max_suppression, scale_coords
 from utils.datasets import letterbox
 from utils.torch_utils import select_device
 
+# Device and model setup
 device = select_device('cpu')
 MODEL_PATH = 'weights/best.pt'
 model = attempt_load(MODEL_PATH, map_location=device)
 model.eval()
 
+# Streamlit UI
 st.title("🚗 Car Dent Detection with YOLOv5")
 st.write("Upload a car image to detect dents using your trained model.")
 
@@ -40,13 +42,16 @@ if uploaded_file:
         pred = model(img_tensor)[0]
         pred = non_max_suppression(pred, conf_thres=0.25, iou_thres=0.45)
 
+    img_pil = image.copy()
+    draw = ImageDraw.Draw(img_pil)
+
     for det in pred:
         if det is not None and len(det):
             det[:, :4] = scale_coords(img_tensor.shape[2:], det[:, :4], img.shape).round()
             for *xyxy, conf, cls in det:
                 label = f"Dent {conf:.2f}"
-                c1, c2 = tuple(map(int, xyxy[:2])), tuple(map(int, xyxy[2:]))
-                img = cv2.rectangle(img.copy(), c1, c2, (0, 255, 0), 2)
-                img = cv2.putText(img, label, c1, cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
+                x1, y1, x2, y2 = map(int, xyxy)
+                draw.rectangle([x1, y1, x2, y2], outline="green", width=3)
+                draw.text((x1, y1 - 10), label, fill="green")
 
-    st.image(img, caption="Detected Dents", use_container_width=True)
+    st.image(img_pil, caption="Detected Dents", use_container_width=True)
