@@ -20,4 +20,4 @@ pandas
 ultralytics==8.0.0  # If using Ultralytics YOLOv5
 
 # Pin Python version for compatibility (streamlit cloud uses this if present)
-python_version==3.10
+
