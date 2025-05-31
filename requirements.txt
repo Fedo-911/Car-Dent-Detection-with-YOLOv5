@@ -1,8 +1,9 @@
 streamlit
 torch
-opencv-python-headless
-Pillow
-numpy
 torchvision
+opencv-python-headless
+numpy
+Pillow
 PyYAML
+seaborn
 ultralytics
