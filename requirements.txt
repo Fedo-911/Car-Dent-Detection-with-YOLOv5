@@ -23,3 +23,4 @@ requests>=2.23.0
 
 # For model export support (optional but often included)
 onnx>=1.9.0
+ultralytics==8.0.206
