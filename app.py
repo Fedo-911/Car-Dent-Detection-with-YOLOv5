@@ -9,6 +9,9 @@ import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), 'yolov5'))
 
 from models.experimental import attempt_load
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), 'yolov5'))
 from yolov5.utils.general import non_max_suppression, scale_coords
 from utils.datasets import letterbox
 from utils.torch_utils import select_device
