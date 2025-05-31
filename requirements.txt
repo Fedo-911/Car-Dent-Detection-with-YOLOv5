@@ -3,3 +3,4 @@ Pillow
 torch
 numpy
 opencv-python-headless==4.8.1.78  # only if you're using any part of YOLO that needs it
+torchvision
