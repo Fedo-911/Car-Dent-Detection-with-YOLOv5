@@ -1,19 +1,10 @@
-# Core dependencies
+streamlit
 torch
 torchvision
 ultralytics
-opencv-python
-
-# Streamlit for the web app
-streamlit
-
-# Config file support
+opencv-python-headless
 pyyaml
-
-# Optional: image and array utilities
 numpy
 Pillow
-
-# Optional: progress bar and other utils
 tqdm
 matplotlib
