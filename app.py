@@ -56,10 +56,12 @@ st.title("Car Dent Detection with YOLOv5")
 uploaded_file = st.file_uploader("Upload an image of a car", type=["jpg", "jpeg", "png"])
 if uploaded_file is not None:
     image = Image.open(uploaded_file).convert("RGB")
+
     st.image(image, caption="Uploaded Image", use_container_width=True)
 
     model, device = load_model(r'C:\car_dental_detection _model\Car-Dent-Detection-with-YOLOv5\weights\best.pt')
 
     with st.spinner("Detecting dents..."):
         result_img = detect_dents(image, model, device)
-        st.image(result_img, caption="Detection Result", use_container_width=True)
+        st.image(result_img, caption="Detection Result", use_container_width=True) 
+   
