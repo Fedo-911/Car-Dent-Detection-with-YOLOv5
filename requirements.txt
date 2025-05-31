@@ -1,8 +1,19 @@
-streamlit
-Pillow
+# Core dependencies
 torch
-numpy
-opencv-python-headless==4.8.1.78  # only if you're using any part of YOLO that needs it
 torchvision
-pyyaml
 ultralytics
+opencv-python
+
+# Streamlit for the web app
+streamlit
+
+# Config file support
+pyyaml
+
+# Optional: image and array utilities
+numpy
+Pillow
+
+# Optional: progress bar and other utils
+tqdm
+matplotlib
