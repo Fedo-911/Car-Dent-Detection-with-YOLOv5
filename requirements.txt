@@ -1,10 +1,9 @@
 streamlit
 torch
 torchvision
-ultralytics
 opencv-python-headless
-pyyaml
+ultralytics
 numpy
 Pillow
+pyyaml
 tqdm
-matplotlib
